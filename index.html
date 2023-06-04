@@ -118,6 +118,18 @@
 
       const likeButton = document.createElement("button");
       likeButton.className = "like-button";
+      likeButton.addEventListener("click", () => {
+        const isActive = likeButton.classList.contains("-active-like");
+
+        if (isActive) {
+          likesCounter.textContent = parseInt(likesCounter.textContent) - 1;
+          likeButton.classList.remove("-active-like");
+        } else {
+          likesCounter.textContent = parseInt(likesCounter.textContent) + 1;
+          likeButton.classList.add("-active-like");
+        }
+      });
+
       likes.appendChild(likesCounter);
       likes.appendChild(likeButton);
 
@@ -133,6 +145,22 @@
       commentInput.value = "";
     };
     addButton.addEventListener("click", addComment);
+
+    //Проверить все лайки
+    const likeButtons = document.querySelectorAll(".like-button");
+    likeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const isActive = button.classList.contains("-active-like");
+        const counter = button.previousSibling;
+        if (isActive) {
+          counter.textContent = parseInt(counter.textContent) - 1;
+          button.classList.remove("-active-like");
+        } else {
+          counter.textContent = parseInt(counter.textContent) + 1;
+          button.classList.add("-active-like");
+        }
+      });
+    });
     //console.log("It works!");
   </script>
 </html>
