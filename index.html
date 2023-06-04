@@ -118,6 +118,18 @@
 
       const likeButton = document.createElement("button");
       likeButton.className = "like-button";
+      likeButton.addEventListener("click", () => {
+        const isActive = likeButton.classList.contains("-active-like");
+
+        if (isActive) {
+          likesCounter.textContent = parseInt(likesCounter.textContent) - 1;
+          likeButton.classList.remove("-active-like");
+        } else {
+          likesCounter.textContent = parseInt(likesCounter.textContent) + 1;
+          likeButton.classList.add("-active-like");
+        }
+      });
+
       likes.appendChild(likesCounter);
       likes.appendChild(likeButton);
 
