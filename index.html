@@ -145,6 +145,22 @@
       commentInput.value = "";
     };
     addButton.addEventListener("click", addComment);
+
+    //Проверить все лайки
+    const likeButtons = document.querySelectorAll(".like-button");
+    likeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const isActive = button.classList.contains("-active-like");
+        const counter = button.previousSibling;
+        if (isActive) {
+          counter.textContent = parseInt(counter.textContent) - 1;
+          button.classList.remove("-active-like");
+        } else {
+          counter.textContent = parseInt(counter.textContent) + 1;
+          button.classList.add("-active-like");
+        }
+      });
+    });
     //console.log("It works!");
   </script>
 </html>
